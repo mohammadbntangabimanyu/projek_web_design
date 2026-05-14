@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code On – Akademi Programming Modern</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body>
+
+  <header id="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-c" >Code</span><span class="logo-dash">-</span><span class="logo-on">on</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#hero">Home</a>
+        <a href="#mosaic">Academy</a>
+        <a href="#instructors">Instructors</a>
+        <a href="#workshops">Courses</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a href="booking.html" class="nav-cta">Book Now</a>
+      <button class="hamburger" id="hamburger"><i class="fas fa-bars"></i></button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#hero">Home</a>
+      <a href="#mosaic">Academy</a>
+      <a href="#instructors">Instructors</a>
+      <a href="#workshops">Courses</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+      <a href="booking.html" class="mobile-cta">Book Now</a>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       HERO SECTION — background: aset/hero_parallax/hero_coba.jpg
+       ============================================================ -->
+  <section id="hero" class="hero-section">
+    <div class="hero-parallax"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <p class="hero-sub fade-up">Selamat Datang di</p>
+      <h1 class="hero-title fade-up delay-1">
+        <span class="title-code">Code</span>
+        <span class="title-on"> On</span>
+      </h1>
+      <p class="hero-tagline fade-up delay-2">Akademi Programming Modern untuk Masa Depan Digital</p>
+      <div class="hero-btns fade-up delay-3">
+        <a href="#workshops" class="btn-primary">Jelajahi Kursus</a>
+        <a href="booking.html" class="btn-secondary">Book Now</a>
+      </div>
+      <div class="hero-stats fade-up delay-4">
+        <div class="stat"><span class="stat-num">2,400+</span><span class="stat-label">Pelajar Aktif</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">48</span><span class="stat-label">Kursus Tersedia</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">4.9★</span><span class="stat-label">Rating Rata-rata</span></div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Parallax Strip 1 — setelah hero -->
+  <section class="parallax-strip strip-1">
+    <div class="strip-overlay"></div>
+    <div class="strip-text">
+      <h2>"The best investment you can make is in yourself."</h2>
+      <p>Kuasai teknologi terkini. Bangun karier impianmu bersama Code On.</p>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       MOSAIC SECTION — 1 grid utuh: 4 kolom × 2 baris = 8 kotak
+       Urutan: img1 · video1 · img2 · teks | video2 · img3 · img4 · img5
+       ============================================================ -->
+<section id="mosaic" class="mosaic-section" style="padding-bottom: 0;">
+    <div class="section-header">
+      <p class="section-eyebrow">Akademi Kami</p>
+      <h2 class="section-title">Suasana & Ekosistem</h2>
+    </div>
+
+    <div class="mosaic-grid">
+      <div class="mosaic-cell cell-img">
+        <div class="img-placeholder mosaic-img-1">
+          <div class="img-overlay"></div>
+          <div class="img-caption">Binary World</div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-video">
+        <div class="video-bg">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;">
+            <source src="aset/video/video_1.mp4" type="video/mp4">
+          </video>
+          <div class="video-overlay-text">
+            <span class="v-tag">ONLINE CLASS</span>
+            <h4>Belajar Kapan Saja,<br/>Di Mana Saja</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-img">
+        <div class="img-placeholder mosaic-img-2">
+          <div class="img-overlay"></div>
+          <div class="img-caption">Hardware & Peripherals</div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-text polkadot">
+        <div class="cell-inner">
+          <i class="fas fa-code cell-icon"></i>
+          <h3>Code Culture</h3>
+          <p>Lingkungan belajar yang kondusif, kolaboratif, dan penuh inovasi.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+ <section class="parallax-strip strip-2" style="height:280px; margin: 0;">
+    <div class="strip-overlay"></div>
+    <div class="strip-text center" style="text-align:center;">
+      <h2 style="letter-spacing:5px;">SET UP YOUR FUTURE</h2>
+    </div>
+  </section>
+
+  <section class="mosaic-section" style="padding-top: 0;">
+    <div class="mosaic-grid">
+      <div class="mosaic-cell cell-video">
+        <div class="video-bg">
+          <video autoplay loop muted playsinline style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;">
+            <source src="aset/video/video_2.mp4" type="video/mp4">
+          </video>
+          <div class="video-overlay-text">
+            <span class="v-tag">STUDY CASE</span>
+            <h4>Project Based<br/>Learning</h4>
+          </div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-img">
+        <div class="img-placeholder mosaic-img-3">
+          <div class="img-overlay"></div>
+          <div class="img-caption">Digital Ecosystem</div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-img">
+        <div class="img-placeholder mosaic-img-4">
+          <div class="img-overlay"></div>
+          <div class="img-caption">Collaborative Workspace</div>
+        </div>
+      </div>
+
+      <div class="mosaic-cell cell-img">
+        <div class="img-placeholder mosaic-img-5">
+          <div class="img-overlay"></div>
+          <div class="img-caption">Remote Learning</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       INSTRUCTORS
+       ============================================================ -->
+  <section id="instructors" class="instructors-section">
+    <div class="section-header light">
+      <p class="section-eyebrow">Tim Pengajar</p>
+      <h2 class="section-title">Instruktur Berpengalaman</h2>
+      <p class="section-desc">Belajar langsung dari para praktisi industri dengan pengalaman bertahun-tahun di perusahaan teknologi global.</p>
+    </div>
+    <div class="instructors-grid">
+      <div class="instructor-card">
+        <div class="instructor-img img-inst-1">
+          <div class="inst-overlay">
+            <div class="inst-social"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div>
+          </div>
+        </div>
+        <div class="instructor-info">
+          <h3>Cristiano Ronaldo</h3>
+          <p class="inst-title">Senior Software Engineer</p>
+          <p class="inst-spec">Python · Django · REST API</p>
+        </div>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-img img-inst-2">
+          <div class="inst-overlay">
+            <div class="inst-social"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div>
+          </div>
+        </div>
+        <div class="instructor-info">
+          <h3>Leo Messi</h3>
+          <p class="inst-title">ML Engineer &amp; Data Scientist</p>
+          <p class="inst-spec">TensorFlow · PyTorch · NLP</p>
+        </div>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-img img-inst-3">
+          <div class="inst-overlay">
+            <div class="inst-social"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div>
+          </div>
+        </div>
+        <div class="instructor-info">
+          <h3>Neymar Jr.</h3>
+          <p class="inst-title">Full Stack Developer</p>
+          <p class="inst-spec">React · Node.js · Docker</p>
+        </div>
+      </div>
+      <div class="instructor-card">
+        <div class="instructor-img img-inst-4">
+          <div class="inst-overlay">
+            <div class="inst-social"><a href="#"><i class="fab fa-linkedin"></i></a><a href="#"><i class="fab fa-github"></i></a></div>
+          </div>
+        </div>
+        <div class="instructor-info">
+          <h3>Lamine Yamal</h3>
+          <p class="inst-title">DevOps &amp; Cloud Architect</p>
+          <p class="inst-spec">AWS · Kubernetes · CI/CD</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       WORKSHOPS & COURSES
+       ============================================================ -->
+  <section id="workshops" class="workshops-section">
+    <div class="section-header">
+      <p class="section-eyebrow">Program Unggulan</p>
+      <h2 class="section-title">Workshop &amp; Kursus</h2>
+    </div>
+    <div class="courses-grid">
+      <div class="course-card featured">
+        <div class="course-thumb thumb-ws1">
+          <div class="course-badge">Bestseller</div>
+          <div class="course-overlay"><a href="booking.html" class="btn-book">Book Now</a></div>
+        </div>
+        <div class="course-info">
+          <div class="course-tags"><span class="tag">AI</span><span class="tag">Machine Learning</span></div>
+          <h3>NLP &amp; Machine Learning</h3>
+          <p>Kuasai Natural Language Processing dari dasar hingga implementasi produksi dengan Python dan TensorFlow.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 40 Jam</span>
+            <span><i class="fas fa-users"></i> 320 Pelajar</span>
+            <span><i class="fas fa-star"></i> 4.9</span>
+          </div>
+          <div class="course-price">
+            <span class="price">Rp 1.200.000</span>
+            <a href="booking.html" class="btn-enroll">Daftar</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-thumb thumb-ws2">
+          <div class="course-badge new">New</div>
+          <div class="course-overlay"><a href="booking.html" class="btn-book">Book Now</a></div>
+        </div>
+        <div class="course-info">
+          <div class="course-tags"><span class="tag">Computer Vision</span><span class="tag">Deep Learning</span></div>
+          <h3>Computer Vision Workshop</h3>
+          <p>Deteksi objek, segmentasi gambar, dan real-time video analysis menggunakan OpenCV dan YOLO.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 32 Jam</span>
+            <span><i class="fas fa-users"></i> 180 Pelajar</span>
+            <span><i class="fas fa-star"></i> 4.8</span>
+          </div>
+          <div class="course-price">
+            <span class="price">Rp 950.000</span>
+            <a href="booking.html" class="btn-enroll">Daftar</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-thumb thumb-ws3">
+          <div class="course-overlay"><a href="booking.html" class="btn-book">Book Now</a></div>
+        </div>
+        <div class="course-info">
+          <div class="course-tags"><span class="tag">Backend</span><span class="tag">API</span></div>
+          <h3>Backend API Architecture</h3>
+          <p>Desain dan bangun REST &amp; GraphQL API yang scalable, aman, dan siap produksi dengan Node.js.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 36 Jam</span>
+            <span><i class="fas fa-users"></i> 240 Pelajar</span>
+            <span><i class="fas fa-star"></i> 4.9</span>
+          </div>
+          <div class="course-price">
+            <span class="price">Rp 1.000.000</span>
+            <a href="booking.html" class="btn-enroll">Daftar</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-thumb thumb-ws4">
+          <div class="course-overlay"><a href="booking.html" class="btn-book">Book Now</a></div>
+        </div>
+        <div class="course-info">
+          <div class="course-tags"><span class="tag">Database</span><span class="tag">SQL</span></div>
+          <h3>Database Engineering</h3>
+          <p>Dari relational database hingga NoSQL. Optimasi query, indexing, dan arsitektur data enterprise.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 28 Jam</span>
+            <span><i class="fas fa-users"></i> 195 Pelajar</span>
+            <span><i class="fas fa-star"></i> 4.7</span>
+          </div>
+          <div class="course-price">
+            <span class="price">Rp 850.000</span>
+            <a href="booking.html" class="btn-enroll">Daftar</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card">
+        <div class="course-thumb thumb-ws5">
+          <div class="course-overlay"><a href="booking.html" class="btn-book">Book Now</a></div>
+        </div>
+        <div class="course-info">
+          <div class="course-tags"><span class="tag">OS</span><span class="tag">DevOps</span></div>
+          <h3>Operating System &amp; DevOps</h3>
+          <p>Linux fundamentals, containerization dengan Docker, dan orkestrasi Kubernetes untuk deployment modern.</p>
+          <div class="course-meta">
+            <span><i class="fas fa-clock"></i> 44 Jam</span>
+            <span><i class="fas fa-users"></i> 160 Pelajar</span>
+            <span><i class="fas fa-star"></i> 4.8</span>
+          </div>
+          <div class="course-price">
+            <span class="price">Rp 1.100.000</span>
+            <a href="booking.html" class="btn-enroll">Daftar</a>
+          </div>
+        </div>
+      </div>
+      <div class="course-card cta-card">
+        <div class="cta-card-inner">
+          <i class="fas fa-rocket cta-icon"></i>
+          <h3>Lihat Semua Kursus</h3>
+          <p>Lebih dari 48 program tersedia untuk semua level — dari pemula hingga profesional.</p>
+          <a href="booking.html" class="btn-primary">Mulai Belajar</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ONLINE CLASSES
+       ============================================================ -->
+  <section class="online-section">
+    <div class="online-grid">
+      <div class="online-text">
+        <p class="section-eyebrow">Kelas Online</p>
+        <h2>Belajar Dari <em>Mana Saja</em></h2>
+        <p>Platform streaming kelas kami memungkinkan kamu akses materi 24/7, diskusi langsung dengan instruktur, dan sertifikat digital yang terverifikasi blockchain.</p>
+        <ul class="online-features">
+          <li><i class="fas fa-check-circle"></i> Akses lifetime ke semua materi</li>
+          <li><i class="fas fa-check-circle"></i> Live Q&amp;A session setiap minggu</li>
+          <li><i class="fas fa-check-circle"></i> Project-based learning</li>
+          <li><i class="fas fa-check-circle"></i> Career mentoring 1-on-1</li>
+        </ul>
+        <a href="booking.html" class="btn-primary">Daftar Sekarang</a>
+      </div>
+      <div class="online-cards">
+        <div class="oc-card oc-card-1">
+          <div class="oc-thumb thumb-oc1"></div>
+          <div class="oc-label">Data Analytics</div>
+        </div>
+        <div class="oc-card oc-card-2">
+          <div class="oc-thumb thumb-oc2"></div>
+          <div class="oc-label">Python Programming</div>
+        </div>
+        <div class="oc-card oc-card-3">
+          <div class="oc-thumb thumb-oc3"></div>
+          <div class="oc-label">AI Problem Solving</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Parallax Strip 3 -->
+  <section class="parallax-strip strip-3">
+    <div class="strip-overlay"></div>
+    <div class="strip-text center">
+      <p class="strip-eyebrow">Bergabunglah Bersama Kami</p>
+      <h2>Siap Mengubah Karier Anda?</h2>
+      <a href="booking.html" class="btn-white">Book Your Seat</a>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT US
+       ============================================================ -->
+  <section id="about" class="about-section">
+    <div class="about-grid">
+      <div class="about-images">
+        <div class="about-img-main img-about1"></div>
+        <div class="about-img-sub img-about2"></div>
+      </div>
+      <div class="about-text">
+        <p class="section-eyebrow">Tentang Kami</p>
+        <h2 class="section-title">Visi &amp; Misi<br/>Code On</h2>
+        <p>Code On didirikan pada 2020 dengan satu misi sederhana: membuat pendidikan teknologi berkualitas tinggi dapat diakses oleh siapa saja di Indonesia. Kami percaya bahwa talenta digital terbaik tidak hanya berasal dari kota-kota besar.</p>
+        <p>Dengan kurikulum yang dirancang bersama industri, pengajar yang merupakan praktisi aktif, dan metodologi belajar berbasis proyek nyata, kami telah membantu lebih dari 2.400 pelajar memulai atau bertransisi ke karier teknologi.</p>
+        <div class="about-stats">
+          <div class="astat"><span>2020</span><small>Tahun Berdiri</small></div>
+          <div class="astat"><span>2,400+</span><small>Alumni</small></div>
+          <div class="astat"><span>48</span><small>Kursus</small></div>
+          <div class="astat"><span>92%</span><small>Hired Rate</small></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT — map dikeluarkan dari grid, full-width di bawah
+       ============================================================ -->
+  <section id="contact" class="contact-section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <p class="section-eyebrow">Hubungi Kami</p>
+        <h2>Mari Berdiskusi</h2>
+        <p>Punya pertanyaan? Tim kami siap membantu kamu.</p>
+        <div class="contact-details">
+          <div class="cd-item"><i class="fas fa-map-marker-alt"></i><span>H8CP+GG Blater, Purbalingga, Jawa Tengah</span></div>
+          <div class="cd-item"><i class="fas fa-envelope"></i><span>hello@codeon.id</span></div>
+          <div class="cd-item"><i class="fas fa-phone"></i><span>+62 21 1234 5678</span></div>
+        </div>
+        <div class="contact-social">
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-linkedin"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="contact-form-wrap">
+        <form id="contactForm" class="contact-form">
+          <h3>Kirim Pesan</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Lengkap</label>
+              <input type="text" placeholder="Masukkan nama kamu" required />
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" placeholder="email@example.com" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subjek</label>
+            <input type="text" placeholder="Minat kursus / pertanyaan" />
+          </div>
+          <div class="form-group">
+            <label>Pesan</label>
+            <textarea rows="5" placeholder="Tuliskan pesan kamu di sini..."></textarea>
+          </div>
+          <button type="submit" class="btn-primary full-width">Kirim Pesan <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div><!-- /contact-grid -->
+
+<div class="map-full-container">
+    <div class="map-embed">
+      <iframe
+        src="https://maps.google.com/maps?q=H8CP%2BGG,%20Blater,%20Kec.%20Kalimanah,%20Kabupaten%20Purbalingga&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+    </div>
+  </div>
+
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="logo"><span class="logo-c">Code</span><span class="logo-dash">-</span><span class="logo-on">on</span></div>
+        <p>Akademi Programming Modern untuk generasi digital Indonesia.</p>
+      </div>
+      <div class="footer-links">
+        <div class="fl-col">
+          <h4>Kursus</h4>
+          <a href="#">Machine Learning</a>
+          <a href="#">Computer Vision</a>
+          <a href="#">Backend API</a>
+          <a href="#">Database</a>
+          <a href="#">DevOps</a>
+        </div>
+        <div class="fl-col">
+          <h4>Perusahaan</h4>
+          <a href="#about">Tentang Kami</a>
+          <a href="#instructors">Instruktur</a>
+          <a href="#contact">Kontak</a>
+          <a href="#">Karier</a>
+        </div>
+        <div class="fl-col">
+          <h4>Dukungan</h4>
+          <a href="#">FAQ</a>
+          <a href="#">Kebijakan Privasi</a>
+          <a href="#">Syarat &amp; Ketentuan</a>
+          <a href="#">Refund Policy</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Code On Academy. All rights reserved.</span>
+      <span>Built with heart in Blater</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+

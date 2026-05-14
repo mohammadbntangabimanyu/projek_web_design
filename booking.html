@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Booking – Code On Academy</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+<body class="booking-page">
+
+  <!-- NAVBAR -->
+  <header id="navbar" class="scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="logo">
+        <span class="logo-c">Code</span><span class="logo-dash">-</span><span class="logo-on">on</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#workshops">Kursus</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+      <a href="index.html" class="nav-cta outline">← Kembali</a>
+    </div>
+  </header>
+
+  <!-- BOOKING HERO -->
+  <section class="booking-hero">
+    <div class="booking-hero-bg"></div>
+    <div class="booking-hero-overlay"></div>
+    <div class="booking-hero-content">
+      <p class="section-eyebrow">Reservasi Kelas</p>
+      <h1>Book Your <em>Seat</em></h1>
+      <p>Isi formulir di bawah dan pilih metode pembayaran yang nyaman untukmu.</p>
+    </div>
+  </section>
+
+  <!-- BOOKING CONTENT -->
+  <section class="booking-section">
+    <div class="booking-wrapper">
+
+      <!-- LEFT: Course Summary -->
+      <aside class="booking-summary">
+        <h3><i class="fas fa-clipboard-list"></i> Ringkasan Pesanan</h3>
+
+        <div class="summary-course-select">
+          <label>Pilih Kursus</label>
+          <select id="courseSelect" onchange="updateSummary()">
+            <option value="nlp" data-price="1200000">NLP & Machine Learning – Rp 1.200.000</option>
+            <option value="cv" data-price="950000">Computer Vision – Rp 950.000</option>
+            <option value="backend" data-price="1000000">Backend API Architecture – Rp 1.000.000</option>
+            <option value="db" data-price="850000">Database Engineering – Rp 850.000</option>
+            <option value="devops" data-price="1100000">DevOps & OS – Rp 1.100.000</option>
+          </select>
+        </div>
+
+        <div class="summary-detail">
+          <div class="sd-row"><span>Kursus</span><strong id="s-course">NLP & Machine Learning</strong></div>
+          <div class="sd-row"><span>Format</span><strong>Online + Live Session</strong></div>
+          <div class="sd-row"><span>Durasi</span><strong id="s-duration">40 Jam</strong></div>
+          <div class="sd-row"><span>Sertifikat</span><strong>✓ Termasuk</strong></div>
+          <div class="sd-row"><span>Harga Asli</span><strong class="line-through" id="s-original">Rp 1.800.000</strong></div>
+          <div class="sd-row highlight"><span>Harga Promo</span><strong class="price-accent" id="s-price">Rp 1.200.000</strong></div>
+          <div class="sd-row total-row"><span>Total</span><strong id="s-total">Rp 1.200.000</strong></div>
+        </div>
+
+        <div class="summary-includes">
+          <h4>Yang Kamu Dapatkan:</h4>
+          <ul>
+            <li><i class="fas fa-check"></i> Akses lifetime materi</li>
+            <li><i class="fas fa-check"></i> Sertifikat digital blockchain</li>
+            <li><i class="fas fa-check"></i> Live Q&A mingguan</li>
+            <li><i class="fas fa-check"></i> Komunitas alumni eksklusif</li>
+            <li><i class="fas fa-check"></i> Career mentoring 1-on-1</li>
+          </ul>
+        </div>
+
+        <div class="summary-guarantee">
+          <i class="fas fa-shield-alt"></i>
+          <span>Garansi uang kembali 7 hari jika tidak puas.</span>
+        </div>
+      </aside>
+
+      <!-- RIGHT: Booking Form -->
+      <div class="booking-form-container">
+        <div class="booking-steps">
+          <div class="step active" id="step-ind-1">
+            <span class="step-num">1</span><span class="step-label">Data Diri</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" id="step-ind-2">
+            <span class="step-num">2</span><span class="step-label">Pembayaran</span>
+          </div>
+          <div class="step-line"></div>
+          <div class="step" id="step-ind-3">
+            <span class="step-num">3</span><span class="step-label">Konfirmasi</span>
+          </div>
+        </div>
+
+        <!-- STEP 1: Personal Data -->
+        <div class="booking-step-content" id="step1">
+          <h3>Data Diri Pendaftar</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nama Depan *</label>
+              <input type="text" id="firstName" placeholder="John" required />
+            </div>
+            <div class="form-group">
+              <label>Nama Belakang *</label>
+              <input type="text" id="lastName" placeholder="Doe" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email Aktif *</label>
+            <input type="email" id="email" placeholder="john@example.com" required />
+            <small>Link akses kelas akan dikirim ke email ini.</small>
+          </div>
+          <div class="form-group">
+            <label>No. sApp *</label>
+            <input type="tel" id="phone" placeholder="+62 123 456 7890" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Kota/Domisili</label>
+              <input type="text" id="city" placeholder="Jakarta" />
+            </div>
+            <div class="form-group">
+              <label>Pekerjaan Saat Ini</label>
+              <select id="occupation">
+                <option>Mahasiswa</option>
+                <option>Fresh Graduate</option>
+                <option>Karyawan Swasta</option>
+                <option>Wirausaha</option>
+                <option>PNS / ASN</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Pengalaman Programming</label>
+            <select id="experience">
+              <option>Pemula (0–6 bulan)</option>
+              <option>Menengah (6 bulan – 2 tahun)</option>
+              <option>Berpengalaman (2+ tahun)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Motivasi Mendaftar (opsional)</label>
+            <textarea rows="3" placeholder="Ceritakan kenapa kamu ingin mengikuti kursus ini..."></textarea>
+          </div>
+          <div class="form-actions">
+            <button class="btn-primary" onclick="goToStep(2)">Lanjut ke Pembayaran <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 2: Payment -->
+        <div class="booking-step-content hidden" id="step2">
+          <h3>Metode Pembayaran</h3>
+          <p class="step-desc">Pilih metode pembayaran yang paling nyaman untukmu.</p>
+
+          <div class="payment-methods">
+
+            <!-- E-WALLET -->
+            <div class="payment-option" onclick="selectPayment('cash')" id="pay-cash">
+              <div class="po-header">
+                <div class="po-radio"></div>
+                <div class="po-icon"><i class="fas fa-wallet"></i></div>
+                <div class="po-info">
+                  <strong>E-Wallet</strong>
+                  <small>E-Wallet – Bayar online secara instan</small>
+                </div>
+              </div>
+              <div class="po-detail" id="detail-cash">
+                <div class="cash-options">
+                  <div class="ewallet-opt" onclick="selectEwallet(event, 'gopay')">
+                    <div class="ew-icon gopay-icon"><i class="fas fa-g"></i></div>
+                    <span>GoPay</span>
+                  </div>
+                  <div class="ewallet-opt" onclick="selectEwallet(event, 'ovo')">
+                    <div class="ew-icon ovo-icon"><i class="fas fa-circle"></i></div>
+                    <span>OVO</span>
+                  </div>
+                  <div class="ewallet-opt" onclick="selectEwallet(event, 'dana')">
+                    <div class="ew-icon dana-icon"><i class="fas fa-d"></i></div>
+                    <span>DANA</span>
+                  </div>
+                  <div class="ewallet-opt" onclick="selectEwallet(event, 'shopeepay')">
+                    <div class="ew-icon spay-icon"><i class="fas fa-shopping-bag"></i></div>
+                    <span>ShopeePay</span>
+                  </div>
+                </div>
+                <div class="form-group mt-1">
+                  <label>No. HP / Akun e-Wallet</label>
+                  <input type="tel" placeholder="+62 812 3456 7890" />
+                </div>
+              </div>
+            </div>
+
+            <!-- QRIS -->
+            <div class="payment-option" onclick="selectPayment('qris')" id="pay-qris">
+              <div class="po-header">
+                <div class="po-radio"></div>
+                <div class="po-icon"><i class="fas fa-qrcode"></i></div>
+                <div class="po-info">
+                  <strong>QRIS</strong>
+                  <small>Scan QR – Semua e-Wallet & m-Banking</small>
+                </div>
+              </div>
+              <div class="po-detail" id="detail-qris">
+                <div class="qris-display">
+                  <div class="qris-code">
+                    <div class="qr-mock">
+                      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <!-- QR mock pattern -->
+                        <rect width="100" height="100" fill="white"/>
+                        <rect x="5" y="5" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
+                        <rect x="10" y="10" width="20" height="20" fill="#0d0d0d"/>
+                        <rect x="65" y="5" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
+                        <rect x="70" y="10" width="20" height="20" fill="#0d0d0d"/>
+                        <rect x="5" y="65" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
+                        <rect x="10" y="70" width="20" height="20" fill="#0d0d0d"/>
+                        <rect x="45" y="5" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="5" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="12" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="20" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="20" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="28" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="60" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="52" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="60" y="52" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="60" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="60" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="60" y="60" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="68" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="75" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="60" y="68" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="45" y="82" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="52" y="82" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="60" y="82" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="68" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="75" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="82" y="45" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="68" y="52" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="82" y="52" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="68" y="60" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="75" y="60" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="68" y="68" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="75" y="75" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="82" y="68" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="68" y="82" width="5" height="5" fill="#0d0d0d"/>
+                        <rect x="82" y="82" width="5" height="5" fill="#0d0d0d"/>
+                        <text x="50" y="97" text-anchor="middle" font-size="6" fill="#555">Code On Academy</text>
+                      </svg>
+                    </div>
+                    <p class="qris-amount">Total: <strong id="qris-total">Rp 1.200.000</strong></p>
+                    <small>Berlaku 15 menit setelah pembuatan order</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- BANK TRANSFER -->
+            <div class="payment-option" onclick="selectPayment('bank')" id="pay-bank">
+              <div class="po-header">
+                <div class="po-radio"></div>
+                <div class="po-icon"><i class="fas fa-university"></i></div>
+                <div class="po-info">
+                  <strong>Transfer Bank</strong>
+                  <small>BCA, BRI, BNI, Mandiri, BSI</small>
+                </div>
+              </div>
+              <div class="po-detail" id="detail-bank">
+                <div class="bank-options">
+                  <div class="bank-opt" onclick="selectBank(event, 'bca')">
+                    <div class="bank-logo bca">BCA</div>
+                    <span>Bank BCA</span>
+                  </div>
+                  <div class="bank-opt" onclick="selectBank(event, 'bri')">
+                    <div class="bank-logo bri">BRI</div>
+                    <span>Bank BRI</span>
+                  </div>
+                  <div class="bank-opt" onclick="selectBank(event, 'bni')">
+                    <div class="bank-logo bni">BNI</div>
+                    <span>Bank BNI</span>
+                  </div>
+                  <div class="bank-opt" onclick="selectBank(event, 'mandiri')">
+                    <div class="bank-logo mandiri">MDR</div>
+                    <span>Mandiri</span>
+                  </div>
+                  <div class="bank-opt" onclick="selectBank(event, 'bsi')">
+                    <div class="bank-logo bsi">BSI</div>
+                    <span>Bank BSI</span>
+                  </div>
+                </div>
+                <div class="bank-details" id="bankDetails">
+                  <div class="bd-row"><span>Bank</span><strong id="bd-bank">BCA</strong></div>
+                  <div class="bd-row"><span>No. Rekening</span><strong id="bd-account">8800 1234 5678</strong><button class="copy-btn" onclick="copyAccount()"><i class="fas fa-copy"></i></button></div>
+                  <div class="bd-row"><span>Atas Nama</span><strong>PT Code On Academy</strong></div>
+                  <div class="bd-row total-row"><span>Jumlah Transfer</span><strong id="bd-amount">Rp 1.200.000</strong></div>
+                </div>
+                <div class="form-group mt-1">
+                  <label>Upload Bukti Transfer</label>
+                  <div class="file-upload" onclick="document.getElementById('proofFile').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Klik untuk upload atau drag & drop</span>
+                    <small>PNG, JPG, PDF – Max 5MB</small>
+                  </div>
+                  <input type="file" id="proofFile" accept="image/*,.pdf" style="display:none" onchange="handleFileUpload(event)" />
+                  <div id="filePreview" class="file-preview" style="display:none"></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="form-actions two-col">
+            <button class="btn-secondary" onclick="goToStep(1)"><i class="fas fa-arrow-left"></i> Kembali</button>
+            <button class="btn-primary" onclick="goToStep(3)">Konfirmasi Pesanan <i class="fas fa-arrow-right"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 3: Confirmation -->
+        <div class="booking-step-content hidden" id="step3">
+          <div class="confirmation-screen">
+            <div class="confirm-icon">
+              <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Pesanan Dikonfirmasi!</h3>
+            <p>Terima kasih, <strong id="confirm-name">—</strong>! Pesananmu telah kami terima.</p>
+            <div class="confirm-details">
+              <div class="cd2-row"><span>Order ID</span><strong id="confirm-id">#CON-2025-0001</strong></div>
+              <div class="cd2-row"><span>Kursus</span><strong id="confirm-course">—</strong></div>
+              <div class="cd2-row"><span>Total Dibayar</span><strong id="confirm-total">—</strong></div>
+              <div class="cd2-row"><span>Email Konfirmasi</span><strong id="confirm-email">—</strong></div>
+              <div class="cd2-row"><span>Status</span><strong class="status-badge">Menunggu Verifikasi</strong></div>
+            </div>
+            <p class="confirm-note">Link akses kelas akan dikirimkan ke email kamu dalam 1x24 jam setelah pembayaran diverifikasi. Cek juga folder Spam.</p>
+            <div class="form-actions">
+              <a href="index.html" class="btn-secondary">← Kembali ke Home</a>
+              <button class="btn-primary" onclick="window.print()"><i class="fas fa-print"></i> Cetak Bukti</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER SIMPLE -->
+  <footer class="footer-simple">
+    <span>© 2025 Code On Academy</span>
+    <span>🔒 Transaksi Aman & Terenkripsi SSL</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
