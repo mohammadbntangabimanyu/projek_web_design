@@ -140,13 +140,12 @@ function goToStep(step) {
   }
 
   // Update indikator step (active / completed)
-  document.querySelectorAll('.step').forEach((el, index) => {
+  [1, 2, 3].forEach((i) => {
+    const el = document.getElementById('step-ind-' + i);
+    if (!el) return;
     el.classList.remove('active', 'completed');
-    if (index + 1 === step) {
-      el.classList.add('active');
-    } else if (index + 1 < step) {
-      el.classList.add('completed');
-    }
+    if (i === step) el.classList.add('active');
+    else if (i < step) el.classList.add('completed');
   });
 
   // Scroll ke atas form
@@ -291,7 +290,7 @@ function selectEwallet(event, walletCode) {
 /**
  * Handle upload file bukti transfer — tampilkan preview gambar dan nama file.
  */
-function handleFileUpload(event) {
+function handleFileUpload(event, previewId, uploadTextId) {
   const file = event.target.files[0];
   if (!file) return;
 
@@ -303,15 +302,17 @@ function handleFileUpload(event) {
     return;
   }
 
-  const preview = document.getElementById('filePreview');
-  const uploadArea = document.querySelector('.file-upload span');
+  const preview = document.getElementById(previewId || 'filePreview');
+  const uploadArea = uploadTextId
+    ? document.getElementById(uploadTextId)
+    : event.target.closest('.form-group')?.querySelector('.file-upload span');
 
   if (preview) {
     preview.style.display = 'block';
 
     // Cek apakah file yang diunggah adalah gambar (PNG/JPG)
     if (file.type.startsWith('image/')) {
-      const reader = new FileReader(); // Fitur JS untuk membaca file menjadi gambar
+      const reader = new FileReader(); 
       
       reader.onload = function(e) {
         // Tampilkan gambar dan teks sukses
@@ -324,7 +325,7 @@ function handleFileUpload(event) {
           </div>
         `;
       };
-      reader.readAsDataURL(file); // Render gambarnya
+      reader.readAsDataURL(file); 
       
     } else {
       // Jika yang diupload bukan gambar (misal PDF)
