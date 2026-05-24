@@ -14,7 +14,7 @@
   <header id="navbar" class="scrolled">
     <div class="nav-container">
       <a href="index.html" class="logo">
-        <span class="logo-c">Code</span><span class="logo-dash">-</span><span class="logo-on">on</span>
+        <span class="logo-c">Code</span><span class="logo-dash">-</span><span class="logo-on">On</span>
       </a>
       <nav class="nav-links">
         <a href="index.html">Home</a>
@@ -79,7 +79,7 @@
 
         <div class="summary-guarantee">
           <i class="fas fa-shield-alt"></i>
-          <span>Garansi uang kembali 7 hari jika tidak puas.</span>
+          <span>Garansi uang kembali jika tidak mahir.</span>
         </div>
       </aside>
 
@@ -118,7 +118,7 @@
             <small>Link akses kelas akan dikirim ke email ini.</small>
           </div>
           <div class="form-group">
-            <label>No. sApp *</label>
+            <label>No. WhatsApp *</label>
             <input type="tel" id="phone" placeholder="+62 123 456 7890" required />
           </div>
           <div class="form-row">
@@ -191,14 +191,32 @@
                     <span>ShopeePay</span>
                   </div>
                 </div>
-                <div class="form-group mt-1">
-                  <label>No. HP / Akun e-Wallet</label>
-                  <input type="tel" placeholder="+62 812 3456 7890" />
+
+                <div class="bank-details" id="ewalletDetails" style="display: none; margin-top: 20px;">
+                  <div class="bd-row"><span>E-Wallet</span><strong id="ew-name">GoPay</strong></div>
+                  <div class="bd-row">
+                    <span>No. Akun</span>
+                    <strong id="ew-account">0812 3456 7890</strong>
+                    <button class="copy-btn" onclick="copyAccount('ew-account')"><i class="fas fa-copy"></i></button>
+                  </div>
+                  <div class="bd-row"><span>Atas Nama</span><strong>Code On Academy</strong></div>
+                  <div class="bd-row total-row"><span>Jumlah Bayar</span><strong id="ew-amount">Rp 1.200.000</strong></div>
                 </div>
-              </div>
+
+                <div class="form-group mt-1" id="ewalletUpload" style="display: none;">
+                  <label>Upload Bukti Pembayaran</label>
+                  <div class="file-upload" onclick="document.getElementById('ewProofFile').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span id="ewUploadText">Klik untuk upload bukti</span>
+                    <small>PNG, JPG, PDF – Max 5MB</small>
+                  </div>
+                  <input type="file" id="ewProofFile" accept="image/*,.pdf" style="display:none" onchange="handleFileUpload(event, 'ewFilePreview', 'ewUploadText')" />
+                  <div id="ewFilePreview" class="file-preview" style="display:none"></div>
+                </div>
+                  
+                </div>
             </div>
 
-            <!-- QRIS -->
             <div class="payment-option" onclick="selectPayment('qris')" id="pay-qris">
               <div class="po-header">
                 <div class="po-radio"></div>
@@ -210,54 +228,13 @@
               </div>
               <div class="po-detail" id="detail-qris">
                 <div class="qris-display">
-                  <div class="qris-code">
-                    <div class="qr-mock">
-                      <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-                        <!-- QR mock pattern -->
-                        <rect width="100" height="100" fill="white"/>
-                        <rect x="5" y="5" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
-                        <rect x="10" y="10" width="20" height="20" fill="#0d0d0d"/>
-                        <rect x="65" y="5" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
-                        <rect x="70" y="10" width="20" height="20" fill="#0d0d0d"/>
-                        <rect x="5" y="65" width="30" height="30" rx="2" fill="none" stroke="#0d0d0d" stroke-width="3"/>
-                        <rect x="10" y="70" width="20" height="20" fill="#0d0d0d"/>
-                        <rect x="45" y="5" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="5" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="12" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="20" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="20" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="28" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="60" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="52" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="60" y="52" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="60" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="60" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="60" y="60" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="68" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="75" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="60" y="68" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="45" y="82" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="52" y="82" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="60" y="82" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="68" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="75" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="82" y="45" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="68" y="52" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="82" y="52" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="68" y="60" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="75" y="60" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="68" y="68" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="75" y="75" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="82" y="68" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="68" y="82" width="5" height="5" fill="#0d0d0d"/>
-                        <rect x="82" y="82" width="5" height="5" fill="#0d0d0d"/>
-                        <text x="50" y="97" text-anchor="middle" font-size="6" fill="#555">Code On Academy</text>
-                      </svg>
+                  <div class="qris-code" style="display: flex; flex-direction: column; align-items: center;">
+                    
+                    <div class="qr-mock" style="width: 200px; height: auto; background: transparent; padding: 0; border: none;">
+                      <img src="aset/qr_qris/qris.jpeg" alt="QRIS Code On Academy" style="width: 100%; border-radius: 8px;">
                     </div>
                     <p class="qris-amount">Total: <strong id="qris-total">Rp 1.200.000</strong></p>
-                    <small>Berlaku 15 menit setelah pembuatan order</small>
+                    
                   </div>
                 </div>
               </div>

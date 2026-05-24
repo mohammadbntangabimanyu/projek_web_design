@@ -78,6 +78,8 @@ function updateSummary() {
   const bdAmount  = document.getElementById('bd-amount');
   if (qrisTotal) qrisTotal.textContent = formatIDR(price);
   if (bdAmount)  bdAmount.textContent  = formatIDR(price);
+  const ewAmount  = document.getElementById('ew-amount');
+  if (ewAmount)  ewAmount.textContent  = formatIDR(price);
 }
 
 /**
@@ -127,11 +129,15 @@ function goToStep(step) {
   // Sembunyikan semua konten step
   document.querySelectorAll('.booking-step-content').forEach((el) => {
     el.classList.add('hidden');
+    el.style.display = 'none';
   });
 
   // Tampilkan step yang dituju
   const targetStep = document.getElementById('step' + step);
-  if (targetStep) targetStep.classList.remove('hidden');
+  if (targetStep) {
+    targetStep.classList.remove('hidden');
+    targetStep.style.display = 'block';
+  }
 
   // Update indikator step (active / completed)
   document.querySelectorAll('.step').forEach((el, index) => {
@@ -197,23 +203,27 @@ function selectBank(event, bankCode) {
 /**
  * Salin nomor rekening ke clipboard.
  */
-function copyAccount() {
-  const bdAccount = document.getElementById('bd-account');
-  if (!bdAccount) return;
+/**
+ * Salin nomor rekening ke clipboard.
+ */
+function copyAccount(elementId) {
+  const targetId = elementId ? elementId : 'bd-account';
+  const accountEl = document.getElementById(targetId);
+  if (!accountEl) return;
 
-  const accNum = bdAccount.textContent;
+  const accNum = accountEl.textContent;
   if (navigator.clipboard) {
     navigator.clipboard.writeText(accNum).then(() => {
-      showCopyFeedback('Nomor rekening disalin: ' + accNum);
+      showCopyFeedback(targetId);
     }).catch(() => {
-      fallbackCopy(accNum);
+      fallbackCopy(accNum, targetId);
     });
   } else {
-    fallbackCopy(accNum);
+    fallbackCopy(accNum, targetId);
   }
 }
 
-function fallbackCopy(text) {
+function fallbackCopy(text, targetId) {
   const ta = document.createElement('textarea');
   ta.value = text;
   ta.style.position = 'fixed';
@@ -223,24 +233,25 @@ function fallbackCopy(text) {
   ta.select();
   try {
     document.execCommand('copy');
-    showCopyFeedback('Nomor rekening disalin: ' + text);
+    showCopyFeedback(targetId);
   } catch (e) {
     alert('Gagal menyalin. Nomor rekening: ' + text);
   }
   document.body.removeChild(ta);
 }
 
-function showCopyFeedback(message) {
-  const btn = document.querySelector('.copy-btn');
-  if (btn) {
+function showCopyFeedback(targetId) {
+  const accountEl = document.getElementById(targetId);
+  const btn = accountEl.nextElementSibling; 
+  if (btn && btn.classList.contains('copy-btn')) {
     const original = btn.innerHTML;
     btn.innerHTML = '<i class="fas fa-check"></i> Disalin!';
     btn.style.background = 'var(--accent)';
     btn.style.color = 'var(--black)';
     setTimeout(() => {
       btn.innerHTML = original;
-      btn.style.background = '';
-      btn.style.color = '';
+      btn.style.background = 'var(--dark2)';
+      btn.style.color = 'var(--light-grey)';
     }, 2000);
   }
 }
@@ -249,17 +260,36 @@ function showCopyFeedback(message) {
  * Pilih e-wallet di opsi Cash/E-Wallet.
  * event.stopPropagation() mencegah tertutupnya accordion pembayaran.
  */
+
+/**
+ * Pilih E-Wallet
+ */
 function selectEwallet(event, walletCode) {
   event.stopPropagation();
 
-  // Tandai tombol e-wallet yang aktif
+  // Data Dummy Akun E-Wallet Perusahaan (Code On Academy)
+  const wallets = {
+    gopay:     ['GoPay',     '0812 3456 7890'],
+    ovo:       ['OVO',       '0812 9876 5432'],
+    dana:      ['DANA',      '0811 2233 4455'],
+    shopeepay: ['ShopeePay', '0899 8877 6655']
+  };
+
+  const data = wallets[walletCode];
+  if (data) {
+    document.getElementById('ew-name').textContent = data[0];
+    document.getElementById('ew-account').textContent = data[1];
+    document.getElementById('ewalletDetails').style.display = 'block';
+    document.getElementById('ewalletUpload').style.display = 'block';
+  }
+
   document.querySelectorAll('.ewallet-opt').forEach((el) => el.classList.remove('active'));
   const clicked = event.currentTarget || event.target.closest('.ewallet-opt');
   if (clicked) clicked.classList.add('active');
 }
 
 /**
- * Handle upload file bukti transfer — tampilkan preview nama file.
+ * Handle upload file bukti transfer — tampilkan preview gambar dan nama file.
  */
 function handleFileUpload(event) {
   const file = event.target.files[0];
@@ -274,14 +304,40 @@ function handleFileUpload(event) {
   }
 
   const preview = document.getElementById('filePreview');
+  const uploadArea = document.querySelector('.file-upload span');
+
   if (preview) {
     preview.style.display = 'block';
-    preview.innerHTML =
-      '<i class="fas fa-check-circle" style="color:var(--accent);margin-right:8px;"></i>' +
-      'Berhasil diupload: <strong>' + file.name + '</strong>';
+
+    // Cek apakah file yang diunggah adalah gambar (PNG/JPG)
+    if (file.type.startsWith('image/')) {
+      const reader = new FileReader(); // Fitur JS untuk membaca file menjadi gambar
+      
+      reader.onload = function(e) {
+        // Tampilkan gambar dan teks sukses
+        preview.innerHTML = `
+          <div style="display: flex; flex-direction: column; align-items: center; gap: 12px; padding: 10px 0;">
+            <img src="${e.target.result}" alt="Preview Bukti Transfer" style="max-height: 200px; width: auto; border-radius: 4px; border: 1px solid var(--dark2);" />
+            <div style="color: var(--accent); font-size: 0.85rem;">
+              <i class="fas fa-check-circle"></i> Berhasil diupload: <strong>${file.name}</strong>
+            </div>
+          </div>
+        `;
+      };
+      reader.readAsDataURL(file); // Render gambarnya
+      
+    } else {
+      // Jika yang diupload bukan gambar (misal PDF)
+      preview.innerHTML = `
+        <div style="color: var(--accent); font-size: 0.85rem; text-align: center; padding: 10px 0;">
+          <i class="fas fa-file-pdf"></i> Dokumen diterima: <strong>${file.name}</strong>
+        </div>
+      `;
+    }
   }
 
-  // Update visual area upload
-  const uploadArea = document.querySelector('.file-upload span');
-  if (uploadArea) uploadArea.textContent = file.name;
+  // Update teks di dalam area putus-putus
+  if (uploadArea) {
+    uploadArea.textContent = 'File dipilih: ' + file.name;
+  }
 }
